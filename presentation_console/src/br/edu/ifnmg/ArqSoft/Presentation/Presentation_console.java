@@ -7,9 +7,6 @@ package br.edu.ifnmg.ArqSoft.Presentation;
 
 import br.edu.ifnmg.ArqSoft.DomainModel.Pessoa;
 import br.edu.ifnmg.ArqSoft.Persistence.PessoaDAO;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  *

@@ -3,6 +3,9 @@
   <persistence-unit name="ArqSoft" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>br.edu.ifnmg.ArqSoft.DomainModel.Pessoa</class>
+    <class>br.edu.ifnmg.ArqSoft.DomainModel.Produto</class>
+    <class>br.edu.ifnmg.ArqSoft.DomainModel.Venda</class>
+    <class>br.edu.ifnmg.ArqSoft.DomainModel.VendaItem</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ArqSoft?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
