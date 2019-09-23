@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "Pessoas")
-public class Pessoa implements Entidade, Serializable {
+public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -48,12 +48,10 @@ public class Pessoa implements Entidade, Serializable {
         this.cpf = cpf;
     }
 
-    @Override
     public Long getId() {
         return id;
     }
 
-    @Override
     public void setId(Long id) {
         this.id = id;
     }
