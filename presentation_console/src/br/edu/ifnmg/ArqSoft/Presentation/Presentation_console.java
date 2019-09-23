@@ -7,7 +7,9 @@ package br.edu.ifnmg.ArqSoft.Presentation;
 
 import br.edu.ifnmg.ArqSoft.DomainModel.Pessoa;
 import br.edu.ifnmg.ArqSoft.Persistence.PessoaDAO;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -21,20 +23,40 @@ public class Presentation_console {
     public static void main(String[] args) {
         
         /*
-        Pessoa p = new Pessoa();
-        p.setNome("Petrônio");
-        p.setCpf("92048935672");
-        p.setDataAniversario(new Date());
+        List<Pessoa> pessoas = new ArrayList<>();
+        
+        pessoas.add(new Pessoa("Petronio","11111111111"));
+        pessoas.add(new Pessoa("Maria","11111111112"));
+        pessoas.add(new Pessoa("João","11111111113"));
+        pessoas.add(new Pessoa("Salete","11111111114"));
+        pessoas.add(new Pessoa("Marquinhos","11111111115"));
         */
+        
         PessoaDAO dao = new PessoaDAO();
+        
+        Pessoa p = dao.AbrirPorCPF("11111111112");
+        
+        System.out.println(p.getNome());
+        
+        /*
+        List<Pessoa> pessoas = dao.Buscar(new Pessoa(null, "11111111112"));
+        
+        for(Pessoa p : pessoas)
+            System.out.println(p.getNome());
+        
+        */
+        //@EJB
+        //PessoaRepositorio dao;
         
         //dao.Salvar(p);
         
+        /*
         Pessoa p = dao.Abrir(1);
         
         System.out.println(p.getNome());
         
         dao.Apagar(p);
+        */
     }
     
 }

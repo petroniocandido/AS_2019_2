@@ -5,10 +5,13 @@
  */
 package br.edu.ifnmg.ArqSoft.DomainModel;
 
+import javax.ejb.Local;
+
 /**
  *
  * @author petronio
  */
+@Local
 public interface PessoaRepositorio extends Repositorio<Pessoa> {
     public Pessoa AbrirPorCPF(String cpf);
 }

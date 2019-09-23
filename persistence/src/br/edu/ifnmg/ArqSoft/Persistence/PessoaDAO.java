@@ -7,11 +7,16 @@ package br.edu.ifnmg.ArqSoft.Persistence;
 
 import br.edu.ifnmg.ArqSoft.DomainModel.Pessoa;
 import br.edu.ifnmg.ArqSoft.DomainModel.PessoaRepositorio;
+import java.util.List;
+import javax.ejb.Singleton;
+import javax.persistence.Query;
 
 /**
  *
  * @author petronio
  */
+
+@Singleton
 public class PessoaDAO extends DAOGenerico<Pessoa> implements PessoaRepositorio {
 
     public PessoaDAO() {
@@ -20,7 +25,35 @@ public class PessoaDAO extends DAOGenerico<Pessoa> implements PessoaRepositorio 
 
     @Override
     public Pessoa AbrirPorCPF(String cpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query consulta = this.manager.createQuery("select p from Pessoa as p where p.cpf = :cpf", classe);
+        consulta.setParameter("cpf", cpf);
+        
+        return (Pessoa) consulta.getSingleResult();
+    }
+    
+    @Override
+    public List<Pessoa> Buscar(Pessoa obj) {
+        
+        String jpql = "select o from " + classe.getSimpleName() + " as o";
+        String where = "";
+        if(obj != null){
+            
+            if(obj.getNome() != null)
+                where += " o.nome like '%" + obj.getNome() +"%' ";
+            
+            if(obj.getCpf() != null){
+                if(where.length() > 0) where += " and ";
+                where += " o.cpf = '" + obj.getCpf() + "' ";
+            }
+        }
+        
+        if(where.length() > 0)
+            jpql += " where " + where;
+        
+        
+        Query consulta = this.manager.createQuery(jpql, classe);
+        
+        return consulta.getResultList();
     }
     
 }

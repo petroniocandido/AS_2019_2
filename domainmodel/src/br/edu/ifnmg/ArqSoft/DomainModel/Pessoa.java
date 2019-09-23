@@ -43,6 +43,11 @@ public class Pessoa implements Entidade, Serializable {
     public Pessoa() {
     }
 
+    public Pessoa(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
+
     @Override
     public Long getId() {
         return id;

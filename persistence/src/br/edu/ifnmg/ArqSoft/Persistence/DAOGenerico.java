@@ -11,16 +11,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
  * @author petronio
  */
-public class DAOGenerico<T> implements Repositorio<T> {
+public abstract class DAOGenerico<T> implements Repositorio<T> {
     
-    EntityManagerFactory factory;
-    EntityManager manager;
-    Class classe;
+    private EntityManagerFactory factory;
+    protected EntityManager manager;
+    protected Class classe;
 
     public DAOGenerico(Class t) {
         classe = t;
@@ -65,9 +66,6 @@ public class DAOGenerico<T> implements Repositorio<T> {
         transaction.commit();
     }
 
-    @Override
-    public List<T> Buscar(T obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }
