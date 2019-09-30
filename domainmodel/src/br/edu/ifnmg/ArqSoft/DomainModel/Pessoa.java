@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import java.util.regex.*;
+
 /**
  *
  * @author petronio
@@ -39,6 +41,10 @@ public class Pessoa implements Serializable {
     
     @Temporal(TemporalType.DATE)
     private Date dataAniversario;
+    
+    
+    private Pattern regex_cpf = 
+            Pattern.compile("\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}");
 
     public Pessoa() {
     }
@@ -73,11 +79,18 @@ public class Pessoa implements Serializable {
     }
 
     public String getCpf() {
-        return cpf;
+        return  cpf.substring(0, 3)+"."+
+                cpf.substring(3, 6)+"."+
+                cpf.substring(6, 9)+"-"+
+                cpf.substring(9, 11);
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCpf(String cpf) throws ErroValidacaoException {
+        Matcher m = regex_cpf.matcher(cpf);
+        if(m.matches())
+            this.cpf = cpf.replace(".", "").replace("-", "");
+        else
+            throw new ErroValidacaoException("CPF Inválido!");
     }
     
     
