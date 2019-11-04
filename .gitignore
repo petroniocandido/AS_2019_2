@@ -29,3 +29,6 @@ hs_err_pid*
 /persistence/build/
 /presentation_console/nbproject/private/
 /presentation_console/build/
+/presentation/nbproject/private/
+/presentation/build/
+/presentation/dist/

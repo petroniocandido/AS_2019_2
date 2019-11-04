@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import java.util.regex.*;
+import javax.persistence.Transient;
 
 /**
  *
@@ -42,11 +43,13 @@ public class Pessoa implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataAniversario;
     
-    
-    private Pattern regex_cpf = 
+    @Transient
+    private final Pattern regex_cpf = 
             Pattern.compile("\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}");
 
     public Pessoa() {
+        this.nome = "";
+        this.cpf = "000.000.000-00";
     }
 
     public Pessoa(String nome, String cpf) {

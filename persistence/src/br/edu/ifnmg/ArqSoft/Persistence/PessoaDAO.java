@@ -9,6 +9,7 @@ import br.edu.ifnmg.ArqSoft.DomainModel.Pessoa;
 import br.edu.ifnmg.ArqSoft.DomainModel.PessoaRepositorio;
 import java.util.List;
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 /**
@@ -16,7 +17,7 @@ import javax.persistence.Query;
  * @author petronio
  */
 
-@Singleton
+@Stateless(name="PessoaRepositorio")
 public class PessoaDAO extends DAOGenerico<Pessoa> implements PessoaRepositorio {
 
     public PessoaDAO() {
