@@ -39,10 +39,10 @@ public class PessoaDAO extends DAOGenerico<Pessoa> implements PessoaRepositorio 
         String where = "";
         if(obj != null){
             
-            if(obj.getNome() != null)
+            if(obj.getNome() != null && !obj.getNome().isEmpty())
                 where += " o.nome like '%" + obj.getNome() +"%' ";
             
-            if(obj.getCpf() != null){
+            if(obj.getCpf() != null && !obj.getCpf().equals("000.000.000-00")){
                 if(where.length() > 0) where += " and ";
                 where += " o.cpf = '" + obj.getCpf() + "' ";
             }

@@ -49,7 +49,7 @@ public class Pessoa implements Serializable {
 
     public Pessoa() {
         this.nome = "";
-        this.cpf = "000.000.000-00";
+        this.cpf = "00000000000";
     }
 
     public Pessoa(String nome, String cpf) {
