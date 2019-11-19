@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="./Template.xhtml">
+
+            <ui:define name="ParteCentral">
+                
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nome:" />
+                    <p:inputText maxlength="250" value="#{pessoaController.pessoa.nome}" />
+                    <h:outputLabel value="CPF:" />
+                    <p:inputMask mask="999.999.999-99" value="#{pessoaController.pessoa.cpf}" />
+                    <h:outputLabel value="Data Nascimento:" />
+                    <p:calendar value="#{pessoaController.pessoa.dataAniversario}" />
+
+                </h:panelGrid>
+                
+                <p:panelGrid columns="3">
+                    <p:commandButton  value="Salvar" action="#{pessoaController.salvar()}" />
+                    <p:commandButton  value="Cancelar" action="#{pessoaController.cancelar()}" />
+                    <p:commandButton  value="Apagar" action="#{pessoaController.apagar()}" />
+                </p:panelGrid>
+                
+                
+            </ui:define>
+
+        </ui:composition>
+</html>
+

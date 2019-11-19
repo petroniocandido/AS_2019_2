@@ -4,14 +4,21 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+    
     <ui:composition template="Template.xhtml">
-        <ui:define name="content">
+        <ui:define name="ParteCentral">
             
-            <h:panelGrid columns="3">
+            <h:panelGrid columns="4">
                 <h:outputLabel value="Nome:" />
                 <p:inputText maxlength="250" value="#{pessoaController.pessoa.nome}" />
+                <h:outputLabel value="CPF:" />
+                <p:inputMask mask="999.999.999-99" value="#{pessoaController.pessoa.cpf}" />
+                
                 <p:commandButton ajax="false"  value="Buscar" action="#{pessoaController.buscar}" />
+                <p:commandButton ajax="false"  value="Novo" action="#{pessoaController.novo}" />
+                
             </h:panelGrid>
+            
             
             <p:dataTable value="#{pessoaController.listagem}" var="item">
                 <p:column headerText="ID">
@@ -22,6 +29,9 @@
                 </p:column>
                 <p:column headerText="CPF">
                     #{item.cpf}
+                </p:column>
+                <p:column headerText="Editar">
+                    <p:commandLink value="Editar"  action="#{pessoaController.editar(item.id)}" />
                 </p:column>
             </p:dataTable>
             

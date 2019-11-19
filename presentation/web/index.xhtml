@@ -9,15 +9,7 @@
      <ui:composition template="./Template.xhtml">
 
             <ui:define name="content">
-                
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Nome:" />
-                    <p:inputText maxlength="250" value="#{controllerTeste.pessoa.nome}" />
-                    <h:outputLabel value="CPF:" />
-                    <p:inputMask mask="999.999.999-99" value="#{controllerTeste.pessoa.cpf}" />
-
-                </h:panelGrid>
-                <p:commandButton  value="Salvar" action="#{controllerTeste.salvar()}" />
+              
                 
             </ui:define>
 
